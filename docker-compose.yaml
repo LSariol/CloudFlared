@@ -7,11 +7,6 @@ services:
     command: tunnel --no-autoupdate run
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-    networks:
-      - edge
     restart: unless-stopped
-
-networks:
-  edge:
-    external: true
-    name: edge
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
